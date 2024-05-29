@@ -24,9 +24,10 @@ SwiperCore.use([Autoplay])
 
 // Define your slides data
 const slides = ref([
-  { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbxH9yUOLz6ofvHikK-Vx5lP5Frrs3UsbfVQ&s' },
+  { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqeWYO69fgMc6PxA8c2CH1bC49ifWhyGO8rg&s' },
   { image: 'https://w0.peakpx.com/wallpaper/653/714/HD-wallpaper-rick-morty-x-breaking-bad.jpg' },
   { image: 'https://wallpapercave.com/wp/wp1822728.jpg' },
+  { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ7HZmZChkuCLOT8VoLPImroBbTA7p57gJrQ&s' },
 
 ])
 </script>

@@ -1,10 +1,7 @@
 <template>
-  <!-- Navigation bar -->
   <div class="bg-gray-900 ">
   <nav class=" p-4 ">
     <div class="container mx-auto ">
-
-      <!-- Navigation Links -->
       <div class="flex space-x-4 text-green-500 justify-end">
         <router-link to="/"><a class="hover:underline">Home</a></router-link>
         <router-link to="/episodes"><a class="hover:underline">Episodes</a></router-link>
@@ -13,21 +10,16 @@
       </div>
     </div>
   </nav>
-
-
-  <!-- Main Content -->
   <div class="bg-gray-900 text-green-600 container mx-auto mt-8 flex flex-col items-center">
     <h1 class="text-4xl font-bold text-center text-green-500 mb-8 font-get-schwifty"> Rick and Morty </h1>
 
- <!-- Image Section -->
- <div class="container mx-auto my-8 flex justify-center">
+    <div class="container mx-auto my-8 flex justify-center">
       <div class="w-full md:w-2/3 lg:w-1/2">
         <swiper />
       </div>
     </div>
   </div>
              
-        <!-- Genre, creators, stars, rating -->
         <div class="w-full bg-gray-900 p-6 rounded-lg shadow-lg mb-8 ">
 
         <div class="text-lg  text-white space-y-4">
@@ -42,15 +34,11 @@
         </div>
       </div>
    
-  
-  
-  <!-- List of characters, episodes, and locations -->
-  <div class="bg-gray-900 container mx-auto p-4">
+    <div class="bg-gray-900 container mx-auto p-4">
       <p v-if="error" class="text-red-500 text-lg">Something went wrong...</p>
       <p v-if="loading" class="text-green-500 text-lg">Loading...</p>
       <div v-else class="space-y-6">
 
-      <!-- Episodes Section -->
       <div>
           <h2 class="text-3xl font-bold text-green-600 mb-6">Episodes</h2>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -62,7 +50,6 @@
           </div>
           <button @click="toggleEpisodes" class="text-green-600 font-semibold hover:underline mt-4">{{ showAllEpisodes ? 'Show Less' : 'Show More' }}</button>
         </div>
-<!-- Characters Section -->
 <div>
         <h2 class="text-3xl font-bold text-green-600 mb-6">Characters</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -80,8 +67,6 @@
 
   </div>
 
-
-      <!-- Locations Section -->
       <div>
         <h2 class="text-3xl font-bold text-green-600 mb-6">Locations</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -94,7 +79,6 @@
   </div>
     </div>
   </div>
-    <!--my  GitHub link -->
     <footer class="bg-gray-900 text-white text-center py-4 flex justify-center gap-8">
   <a href="https://github.com/rahel-yekoye" target="_blank" rel="noopener noreferrer" class="cursor-pointer text-green-600 font-semibold hover:underline mt-4">GitHub</a>
   <a href="https://www.figma.com/design/5mX336665fxxCdLz2dBs6Z/homepage?node-id=0-1&t=MHHezNsPyeGv2DYl-0" target="_blank" rel="noopener noreferrer" class="cursor-pointer text-green-600 font-semibold hover:underline mt-4">figma-link</a>
@@ -105,7 +89,7 @@
 <script setup>
 import { ref, watchEffect, computed } from 'vue'
 import gql from 'graphql-tag'
-import { useRouter } from 'vue-router' // Import useRouter
+import { useRouter } from 'vue-router' 
 import { useQuery } from '@vue/apollo-composable'
 import { RouterLink } from 'vue-router';
 import Swiper from './Swiper.vue'
@@ -150,9 +134,6 @@ const CHARACTERS_QUERY = gql`
 
 const { result, loading, error } = useQuery(CHARACTERS_QUERY);
 
-
-
-// Utility function to get unique items
 const getUniqueItems = (items, key) => {
   const uniqueKeys = new Set();
   return items.filter(item => {
@@ -164,7 +145,6 @@ const getUniqueItems = (items, key) => {
   });
 }
 
-// Compute unique episodes, characters, and locations
 const uniqueEpisodes = computed(() => {
   if (!result.value) return [];
   const episodes = result.value.characters.results.flatMap(character => character.episode);
@@ -180,7 +160,6 @@ const uniqueLocations = computed(() => {
   return getUniqueItems(locations, 'id');
 });
 
-// Store all episodes, characters, and locations, and subsets of displayed items
 const allEpisodes = ref([]);
 const allCharacters = ref([]);
 const allLocations = ref([]);
@@ -191,25 +170,22 @@ const showAllEpisodes = ref(false);
 const showAllCharacters = ref(false);
 const showAllLocations = ref(false);
 
-// Watch for data and update the lists
-
 
 watchEffect(() => {
   if (result.value && result.value.characters) {
     const episodes = result.value.characters.results.flatMap(character => character.episode);
-    allEpisodes.value = episodes.slice(0, 20); // Limit to the first 20 episodes
-    displayedEpisodes.value = allEpisodes.value.slice(0, 6); // Display first 6 episodes initially
+    allEpisodes.value = episodes.slice(0, 20); 
+    displayedEpisodes.value = allEpisodes.value.slice(0, 6); 
   }
   if (uniqueCharacters.value.length) {
     allCharacters.value = uniqueCharacters.value;
-    displayedCharacters.value = allCharacters.value.slice(0, 6); // Display first 6 characters initially
+    displayedCharacters.value = allCharacters.value.slice(0, 6); 
   }
   if (uniqueLocations.value.length) {
     allLocations.value = uniqueLocations.value;
-    displayedLocations.value = allLocations.value.slice(0, 6); // Display first 6 locations initially
+    displayedLocations.value = allLocations.value.slice(0, 6); 
   }
 });
-// Functions to show more episodes, characters, and locations
 const showMoreEpisodes = () => {
   const startIndex = displayedEpisodes.value.length;
   const endIndex = Math.min(startIndex + 6, allEpisodes.value.length);
@@ -232,7 +208,7 @@ const toggleEpisodes = () => {
   if (showAllEpisodes.value) {
     displayedEpisodes.value = allEpisodes.value;
   } else {
-    displayedEpisodes.value = allEpisodes.value.slice(0, 6); // Display first 6 episodes when "Show Less" is clicked
+    displayedEpisodes.value = allEpisodes.value.slice(0, 6); 
   }
 }
 const toggleCharacters = () => {
@@ -240,7 +216,7 @@ const toggleCharacters = () => {
   if (showAllCharacters.value) {
     displayedCharacters.value = allCharacters.value;
   } else {
-    displayedCharacters.value = allCharacters.value.slice(0, 6); // Display first 6 episodes when "Show Less" is clicked
+    displayedCharacters.value = allCharacters.value.slice(0, 6); 
   }}
 
 const toggleLocations = () => {
@@ -248,7 +224,7 @@ const toggleLocations = () => {
   if (showAllLocations.value) {
     displayedLocations.value = allLocations.value;
   } else {
-    displayedLocations.value = allLocations.value.slice(0, 6); // Display first 6 episodes when "Show Less" is clicked
+    displayedLocations.value = allLocations.value.slice(0, 6); 
   }
 
 };

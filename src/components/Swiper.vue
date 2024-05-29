@@ -16,13 +16,10 @@ import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper-bundle.css'
 
-// Import Swiper core and required modules
 import SwiperCore, { Autoplay } from 'swiper'
 
-// Install modules
 SwiperCore.use([Autoplay])
 
-// Define your slides data
 const slides = ref([
   { image: 'https://www.chromethemer.com/wallpapers/chromebook-wallpapers/images/960/420-rick-and-morty-chromebook-wallpaper.jpg' },
   { image: 'https://w0.peakpx.com/wallpaper/653/714/HD-wallpaper-rick-morty-x-breaking-bad.jpg' },

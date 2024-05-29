@@ -3,7 +3,6 @@
     <div class="bg-gray-900 container mx-auto flex justify-between items-center">
       <span class="text-green-600 font-get-schwifty">Rick&Morty</span>
     </div>
-    <!-- Navigation Links -->
     <div class="flex space-x-4 text-green-600 justify-end">
       <router-link :to="{ path: '/' }"><a class="hover:underline">Home</a></router-link>
       <router-link :to="{ path: '/Episodes/' }"><a class="hover:underline">Episodes</a></router-link>
@@ -23,7 +22,6 @@
             <p class="text-white mb-2"><strong>Episode Code:</strong> {{ ep.episode }}</p>
             <p class="text-white mb-2"><strong>Air Date:</strong> {{ ep.air_date }}</p>
             <p class="text-white mb-2"><strong>Created:</strong> {{ ep.created }}</p>
-            <!-- Display up to 2 characters -->
             <div class="flex justify-between">
               <div v-for="(character, i) in ep.characters.slice(0, 2)" :key="i" class="bg-gray-800 shadow-md rounded-full p-2 m-2 flex items-center justify-center" style="width: 48%;">
                 <img :src="character.image" :alt="character.name" class="w-8 h-8 rounded-full mr-2">
@@ -35,7 +33,6 @@
                 </div>
               </div>
             </div>
-            <!-- Additional characters displayed when See More button is clicked -->
             <div v-if="expandedIndex === index" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
               <div v-for="(character, i) in ep.characters.slice(2)" :key="i" class="bg-gray-800 shadow-md rounded-full p-2 flex items-center justify-center">
                 <img :src="character.image" :alt="character.name" class="w-8 h-8 rounded-full mr-2">
@@ -47,22 +44,19 @@
                 </div>
               </div>
             </div>
-            <!-- See More Button -->
             <button @click="showMore(index)" class="mt-4 ml-auto mr-auto flex items-center justify-center w-8 h-8 bg-green-600 text-white rounded-full hover:bg-blue-600">
               <span v-if="expandedIndex !== index">+</span>
               <span v-else>-</span>
             </button>
           </div>
         </div>
-        <!-- See More/Back Button -->
-        <div class="flex justify-center mt-8">
+\        <div class="flex justify-center mt-8">
           <button @click="toggleEpisodes" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-blue-600">
             {{ showAll ? 'Back' : 'See More' }}
           </button>
         </div>
       </div>
     </ul>
-     <!--my  GitHub link -->
      <div class="flex justify-center gap-8">
       <footer class="bg-gray-900 text-white text-center py-4 flex justify-center gap-8">
   <a href="https://github.com/rahel-yekoye" target="_blank" rel="noopener noreferrer" class="cursor-pointer text-green-600 font-semibold hover:underline mt-4">GitHub</a>
@@ -79,7 +73,7 @@ import gql from 'graphql-tag'
 import { useQuery } from '@vue/apollo-composable'
 
 const expandedIndex = ref(null)
-const episodesToDisplay = ref(12) // 6 rows x 2 episodes per row
+const episodesToDisplay = ref(12) 
 const showAll = ref(false)
 
 const Episode_QUERY = gql`

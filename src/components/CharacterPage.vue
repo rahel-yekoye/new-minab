@@ -1,12 +1,10 @@
 <template>
   <div class="bg-gray-900 min-h-screen">
     <nav class="bg-gray-900 p-4">
-      <!-- Logo or Branding -->
       <div class="text-green-600 font-get-schwifty text-2xl font-bold flex items-center">
         <span>Rick&Morty</span>
       </div>
       <div class="bg-gray-900">
-        <!-- Navigation Links -->
         <div class="flex bg-gray-900 space-x-4 text-green-600 justify-end">
           <router-link :to="{ path: '/' }"><a class="hover:underline">Home</a></router-link>
           <router-link :to="{ path: '/Episodes/' }"><a class="hover:underline">Episodes</a></router-link>
@@ -63,7 +61,6 @@
         <button @click="handleButtonClick" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">{{ buttonText }}</button>
       </div>
     </div>
-     <!--my  GitHub link -->
      <footer class="bg-gray-900 text-white text-center py-4 flex justify-center gap-8">
   <a href="https://github.com/rahel-yekoye" target="_blank" rel="noopener noreferrer" class="cursor-pointer text-green-600 font-semibold hover:underline mt-4">GitHub</a>
   <a href="https://www.figma.com/design/qKo6UXOddfYzNyusTdcbV6/characterspage?node-id=0-1&t=i8Ctck2E9OF6PA4j-0" target="_blank" rel="noopener noreferrer" class="cursor-pointer text-green-600 font-semibold hover:underline mt-4">figma-link</a>

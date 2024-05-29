@@ -4,7 +4,6 @@
       <div class="bg-gray-900 container mx-auto flex justify-between items-center">
         <span class="text-green-600 font-get-schwifty">Rick&Morty</span>
       </div>
-      <!-- Navigation Links -->
       <div class="flex space-x-4 text-green-600 justify-end">
         <router-link :to="{ path: '/' }"><a class="hover:underline">Home</a></router-link>
         <router-link :to="{ path: '/Episodes/' }"><a class="hover:underline">Episodes</a></router-link>
@@ -46,7 +45,6 @@
         <button v-if="moreLocationsVisible" @click="toggleMoreLocations" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">See More</button>
       </div>
     </div>
-     <!--my  GitHub link -->
      <footer class="bg-gray-900 text-white text-center py-4 flex justify-center gap-8">
   <a href="https://github.com/rahel-yekoye" target="_blank" rel="noopener noreferrer" class="cursor-pointer text-green-600 font-semibold hover:underline mt-4">GitHub</a>
   <a href="https://www.figma.com/design/nxAbKiuxdTdD5vzhFRDst7/locationpage?node-id=0-1&t=vGJPm2nWYVvm4r9Z-0" target="_blank" rel="noopener noreferrer" class="cursor-pointer text-green-600 font-semibold hover:underline mt-4">figma-link</a>
@@ -107,9 +105,8 @@ onMounted(() => {
 
 
 <style scoped>
-/* Custom styles can go here if needed */
 .character-container {
-  border-radius: 48%; /* Adjust the border-radius value as needed */
+  border-radius: 48%; 
 }
 
 .character {

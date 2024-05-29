@@ -231,6 +231,5 @@ const toggleLocations = () => {
 </script>
 
 <style scoped>
-/* Add any component-specific styles here */
 
 </style>
